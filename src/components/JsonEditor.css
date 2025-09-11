@@ -1,0 +1,283 @@
+.json-editor {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.json-editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.view-mode-toggle {
+  display: flex;
+  gap: 4px;
+}
+
+.view-mode-toggle button {
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.view-mode-toggle button:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.view-mode-toggle button:last-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.view-mode-toggle button.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.view-mode-toggle button:not(.active):hover {
+  background: #f3f4f6;
+}
+
+.json-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.json-actions button {
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.json-actions button:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.json-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.json-error {
+  padding: 12px 16px;
+  background: #fef2f2;
+  color: #dc2626;
+  border-bottom: 1px solid #fecaca;
+  font-size: 14px;
+}
+
+.json-tree-view {
+  flex: 1;
+  overflow: auto;
+}
+
+.json-tree-container {
+  padding: 16px;
+}
+
+.json-node {
+  user-select: text;
+}
+
+.json-node-content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.6;
+}
+
+.expand-btn {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-size: 10px;
+  color: #6b7280;
+  transition: all 0.2s;
+}
+
+.expand-btn:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.no-expand-spacer {
+  width: 20px;
+  display: inline-block;
+}
+
+.json-key {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.json-colon {
+  color: #6b7280;
+}
+
+.json-bracket {
+  color: #6b7280;
+}
+
+.json-value {
+  font-weight: 500;
+}
+
+.json-children {
+  border-left: 1px solid #e5e7eb;
+  margin-left: 10px;
+}
+
+.json-textarea {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  resize: none;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  background: #ffffff;
+  color: #1f2937;
+  outline: none;
+  flex: 1;
+}
+
+.json-textarea:focus {
+  background: #fafafa;
+}
+
+.json-textarea::selection {
+  background: #dbeafe;
+}
+
+.json-node:hover .json-node-content {
+  background: #f9fafb;
+}
+
+.json-node-content:hover .expand-btn {
+  opacity: 1;
+}
+
+.json-tree-container::-webkit-scrollbar,
+.json-textarea::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.json-tree-container::-webkit-scrollbar-track,
+.json-textarea::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.json-tree-container::-webkit-scrollbar-thumb,
+.json-textarea::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+.json-tree-container::-webkit-scrollbar-thumb:hover,
+.json-textarea::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+@media (prefers-color-scheme: dark) {
+  .json-editor {
+    background: #1f2937;
+    border-color: #374151;
+  }
+
+  .json-editor-header {
+    background: #111827;
+    border-bottom-color: #374151;
+  }
+
+  .view-mode-toggle button {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f3f4f6;
+  }
+
+  .view-mode-toggle button.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+  }
+
+  .view-mode-toggle button:not(.active):hover {
+    background: #4b5563;
+  }
+
+  .json-actions button {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f3f4f6;
+  }
+
+  .json-actions button:hover:not(:disabled) {
+    background: #4b5563;
+    border-color: #6b7280;
+  }
+
+  .json-error {
+    background: #450a0a;
+    color: #fca5a5;
+    border-bottom-color: #7f1d1d;
+  }
+
+  .json-textarea {
+    background: #1f2937;
+    color: #f3f4f6;
+  }
+
+  .json-textarea:focus {
+    background: #111827;
+  }
+
+  .json-node:hover .json-node-content {
+    background: #374151;
+  }
+
+  .expand-btn:hover {
+    background: #374151;
+    color: #f3f4f6;
+  }
+
+  .json-tree-container::-webkit-scrollbar-track,
+  .json-textarea::-webkit-scrollbar-track {
+    background: #374151;
+  }
+
+  .json-tree-container::-webkit-scrollbar-thumb,
+  .json-textarea::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
+
+  .json-tree-container::-webkit-scrollbar-thumb:hover,
+  .json-textarea::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+}

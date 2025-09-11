@@ -1,50 +1,44 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
+import JsonEditor from "./components/JsonEditor";
 import "./App.css";
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
+  const sampleJson = `{
+  "name": "JSON格式化工具",
+  "version": "1.0.0",
+  "description": "一个简洁、优雅的JSON格式化工具",
+  "features": [
+    "JSON解析与格式化",
+    "JSON压缩（去除空白）",
+    "对象/数组的展开和收缩",
+    "树形视图和原始视图切换",
+    "实时编辑与验证"
+  ],
+  "settings": {
+    "theme": "auto",
+    "indentSize": 2,
+    "autoFormat": true,
+    "showLineNumbers": false
+  },
+  "author": {
+    "name": "Tauri Developer",
+    "email": "dev@tauri.app"
   }
+}`;
 
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
-
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
+    <div className="app-container">
+      <header className="app-header">
+        <h1>JSON 格式化工具</h1>
+        <p className="app-subtitle">简洁、优雅、实用</p>
+      </header>
+      
+      <main className="app-main">
+        <JsonEditor 
+          initialJson={sampleJson}
+          height="calc(100vh - 120px)"
         />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
-    </main>
+      </main>
+    </div>
   );
 }
 
